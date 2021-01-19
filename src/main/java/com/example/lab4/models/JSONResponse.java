@@ -10,6 +10,7 @@ public class JSONResponse {
 
     public String status;
     public String details;
+    public String exception;
 
     public String key;
     public List<Point> data;

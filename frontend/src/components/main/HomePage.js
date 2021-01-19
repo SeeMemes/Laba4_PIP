@@ -48,7 +48,6 @@ function HomePage(props) {
             }).then(response => response.text().then(text => {
                 if (response.ok) {
                     setResults(JSON.parse(text).data)
-                    console.log("Результаты", JSON.parse(text).data)
                 }/*if (response.status == 403) {
                     fetch("/api/refresh/token", {
                         method: 'POST',

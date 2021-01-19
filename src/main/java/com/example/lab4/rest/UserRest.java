@@ -54,6 +54,7 @@ public class UserRest {
 
         } catch (Exception e) {
             resp.details = e.getMessage();
+            resp.exception = "true";
             resp.status = JSONResponse.statusFail;
             return gson.toJson(resp, JSONResponse.class);
         }
@@ -85,6 +86,7 @@ public class UserRest {
 
         } catch (Exception e) {
             resp.details = e.getMessage();
+            resp.exception = "true";
             resp.status = JSONResponse.statusFail;
             return gson.toJson(resp, JSONResponse.class);
         }

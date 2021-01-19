@@ -16,7 +16,7 @@ function LoginForm() {
             "password":password
         }
 
-        if (username.length!=0 && password.length) {
+        if (username.length!==0 && password.length) {
             fetch("/lk/login", {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -24,19 +24,20 @@ function LoginForm() {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
             }).then(response => response.json().then(json => {
-                if (response.ok) {
+                if (json.status === 'ok' && json.exception !== 'true') {
                     store.dispatch({type: "NEW_TOKEN", token: json.key, rtoken: json.refresh_token})
-                    console.log("Token:" + json.key)
-                } else if (response.status === 403) {
+                    console.log("JSON входа: ", json)
+                } else if (json.exception === 'true') {
                     MessagesInstance.show({
                         severity: 'error',
-                        summary: json.description
+                        summary: json.details
                     })
                 } else {
                     MessagesInstance.show({
                         severity: 'error',
                         summary: 'Unhandled error'
                     })
+                    store.dispatch({type: "TOKEN_CLEAR", token: null})
                 }
             }))
         }
@@ -53,7 +54,7 @@ function LoginForm() {
             "username":username,
             "password":password
         }
-        if (username.length!=0 && password.length) {
+        if (username.length!==0 && password.length) {
             fetch("/lk/register", {
                 method: 'POST',
                 body: JSON.stringify(data),
@@ -61,18 +62,20 @@ function LoginForm() {
                     'Content-Type': 'application/json;charset=utf-8'
                 },
             }).then(response => response.json().then(json => {
-                if (response.ok) {
+                if (json.status === "ok" && json.exception !== 'true') {
                     store.dispatch({type: "NEW_TOKEN", token: json.key, rtoken: json.refresh_token})
-                } else if (response.status === 403) {
+                    console.log("JSON входа: ",json.status)
+                } else if (json.exception === "true") {
                     MessagesInstance.show({
                         severity: 'error',
-                        summary: json.description
+                        summary: json.details
                     })
                 } else {
                     MessagesInstance.show({
                         severity: 'error',
                         summary: 'Unhandled error'
                     })
+                    store.dispatch({type: "TOKEN_CLEAR", token: null})
                 }
             }))
         }
