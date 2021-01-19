@@ -14,9 +14,9 @@ function Table(props) {
     return<div >
         <DataTable id="result_table" value={props.results} paginator rows={10}
                    paginatorLeft={paginatorLeft} paginatorRight={paginatorRight}>
-            <Column field="x" header="x"/>
-            <Column field="y" header="y"/>
-            <Column field="r" header="r"/>
+            <Column field="x" header="x" filterMaxLength={5}/>
+            <Column field="y" header="y" filterMaxLength={5}/>
+            <Column field="r" header="r" filterMaxLength={5}/>
             <Column field="result" header="result"/>
         </DataTable>
     </div>

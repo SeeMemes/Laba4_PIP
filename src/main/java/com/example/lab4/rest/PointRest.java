@@ -40,9 +40,9 @@ public class PointRest {
 
 
                 Point point = new Point();
-                point.setX(Double.parseDouble(x));
-                point.setY(Double.parseDouble(y));
-                point.setR(Double.parseDouble(r));
+                point.setX(Math.round(Double.parseDouble(x)*1000.0)/1000.0);
+                point.setY(Math.round(Double.parseDouble(y)*1000.0)/1000.0);
+                point.setR(Math.round(Double.parseDouble(r)*1000.0)/1000.0);
                 point.setResult(Point.calculate(Double.parseDouble(x), Double.parseDouble(y), Double.parseDouble(r)));
                 this.dbPoints.save(point);
 

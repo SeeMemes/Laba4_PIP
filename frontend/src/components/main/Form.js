@@ -141,8 +141,8 @@ function Form(props) {
                         <label htmlFor="r_value" className="p-sm-2 p-md-4 p-xl-6">R:</label>
                         <div className="p-sm-12 p-md-7 p-xl-5 p-col">
                             <InputNumber id="r_value" value={props.r} onValueChange={(e) => props.setR(e.value)} mode="decimal"
-                                         min={0.01} max={5}
-                                         minFractionDigits={1} maxFractionDigits={2} placeholder="Enter R [0.01;5]"/>
+                                         min={0.01} max={4.99}
+                                         minFractionDigits={1} maxFractionDigits={2} placeholder="Enter R [0.01;4.99]"/>
                         </div>
                     </div>
 

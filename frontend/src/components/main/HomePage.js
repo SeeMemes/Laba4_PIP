@@ -23,7 +23,7 @@ function HomePage(props) {
     }
 
     function validate(){
-        const validation_result = !validate_number(x_val, -3, 5) || !validate_number(y_val, -3, 5) ||!validate_number(r_val, 0.01, 5)
+        const validation_result = !validate_number(x_val, -3, 5) || !validate_number(y_val, -3, 5) ||!validate_number(r_val, 0.01, 4.99)
         if (validation_result){
             if (MessageText.current !== null) {
                 MessageText.current.show({
